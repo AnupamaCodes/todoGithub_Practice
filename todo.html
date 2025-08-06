@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>tODO</title>
+  </head>
+  <body>
+    <div>
+      <input id="inputforTodo" type="text" placeholder="write Todo here" />
+
+      <ul id="listTodo"></ul>
+      <button id="addButton" onclick="addFunction()">addButton</button>
+
+      <script>
+        function addFunction() {
+          const addInput = document.getElementById("inputforTodo");
+          const listul = document.getElementById("listTodo");
+          const input = addInput.value.trim();
+          if (input !== "") {
+            // console.log("hello");
+            //box
+            const listItem = document.createElement("li");
+            const checkbox = document.createElement("input");
+            checkbox.type = "checkbox";
+
+            const textSpan = document.createElement("span");
+            textSpan.textContent = input;
+            textSpan.style.marginLeft = "8px";
+
+            checkbox.addEventListener("change", function () {
+              if (this.checked) {
+                textSpan.style.textDecoration = "line-through";
+              } else {
+                textSpan.style.textDecoration = "none";
+              }
+            });
+
+            listItem.appendChild(checkbox);
+            listItem.appendChild(textSpan);
+
+            // listItem.textContent = input; //to write content
+            // console.log(input);
+            listul.appendChild(listItem); // to list element
+            addInput.value = "";
+          }
+        }
+      </script>
+    </div>
+  </body>
+</html>
